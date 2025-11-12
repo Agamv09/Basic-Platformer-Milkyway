@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://co2lrs2408xyt"]
+[gd_scene load_steps=9 format=3 uid="uid://co2lrs2408xyt"]
 
 [ext_resource type="PackedScene" uid="uid://7xr22pqfuj2j" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://c1xpn8w3y4jl5" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://dqagyh7b6dqv4" path="res://Scenes/platform.tscn" id="3_wrm1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -169,16 +170,67 @@ texture = ExtResource("2_qxrlw")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 
+[sub_resource type="Animation" id="Animation_wrm1d"]
+resource_name = "Move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(143, 36), Vector2(218, 36)]
+}
+
+[sub_resource type="Animation" id="Animation_3dryh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(337, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wowpa"]
+_data = {
+&"Move": SubResource("Animation_wrm1d"),
+&"RESET": SubResource("Animation_3dryh")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(15, 0)
 tile_set = SubResource("TileSet_3dryh")
 format = 2
-layer_0/tile_data = PackedInt32Array(131078, 0, 0, 65543, 0, 0, 8, 0, 0, 131077, 0, 0, 131079, 0, 1, 131080, 0, 1, 65544, 0, 1, 11, 720896, 0, 9, 589824, 0, 10, 655360, 0, 131075, 0, 0, 131076, 0, 0, 131074, 0, 0, 12, 393216, 0, 65548, 393216, 1, 131084, 393216, 1, 196620, 393216, 1, 262156, 393216, 1, 327692, 393216, 1, 393228, 393216, 1, 458764, 393216, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 1, 262152, 0, 1, 262151, 0, 1, 262150, 0, 1, 262149, 0, 1, 262148, 0, 1, 262147, 0, 1, 327683, 0, 1, 327682, 0, 1, 262146, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 327687, 0, 1, 327688, 0, 1, 13, 393216, 0, 65549, 393216, 1, 131085, 393216, 1, 196621, 393216, 1, 262157, 393216, 1, 327693, 393216, 1, 393229, 393216, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 1, 393221, 0, 1, 393222, 0, 1, 393223, 0, 1, 393224, 0, 1, 14, 589824, 2, 15, 655360, 2, 16, 720896, 2, 17, 262144, 0, 18, 262144, 0, 65553, 262144, 1, 65554, 262144, 1, 131090, 262144, 1, 196626, 262144, 1, 262162, 262144, 1, 327698, 262144, 1, 393234, 262144, 1, 393233, 262144, 1, 327697, 262144, 1, 262161, 262144, 1, 196625, 262144, 1, 131089, 262144, 1)
+layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131075, 0, 0, 131076, 0, 0, 131074, 0, 0, 196610, 0, 1, 196611, 0, 1, 196612, 65536, 0, 196613, 0, 1, 196614, 0, 1, 262150, 0, 1, 262149, 0, 1, 262148, 0, 1, 262147, 0, 1, 262146, 0, 1, 262145, 65536, 0, 196609, 65536, 0, 131073, 0, 1, 131072, 65536, 0, 262144, 0, 1, 196608, 0, 1, 65537, 0, 1, 65536, 0, 1, 0, 65536, 0, -65536, 0, 1, -65535, 0, 1, 1, 0, 1, -131072, 0, 1, -131071, 0, 1, -196607, 0, 1, -196608, 0, 1, -196606, 65536, 0, -131070, 0, 1, -131069, 0, 1, -196605, 0, 1, -196604, 0, 1, -196603, 0, 1, -131067, 0, 1, -131068, 0, 1, -262144, 0, 1, -262143, 0, 1, -262142, 0, 1, -262141, 0, 1, -262140, 0, 1, -262139, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 393222, 0, 1, 393221, 0, 1, 393220, 0, 1, 393219, 0, 1, 393218, 0, 1, 393217, 0, 1, 393216, 0, 1, 458751, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(74, 28)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(74, 22)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -6)
 zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Platform" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(247, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(337, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_wowpa")
+}
+autoplay = "Move"
