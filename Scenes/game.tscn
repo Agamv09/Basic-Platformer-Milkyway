@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://co2lrs2408xyt"]
+[gd_scene load_steps=10 format=3 uid="uid://co2lrs2408xyt"]
 
 [ext_resource type="PackedScene" uid="uid://7xr22pqfuj2j" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://c1xpn8w3y4jl5" path="res://Assets/sprites/world_tileset.png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://dqagyh7b6dqv4" path="res://Scenes/platform.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://3wnrkkkbhjhb" path="res://Scenes/coin.tscn" id="4_3dryh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -213,7 +214,7 @@ _data = {
 position = Vector2(15, 0)
 tile_set = SubResource("TileSet_3dryh")
 format = 2
-layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131075, 0, 0, 131076, 0, 0, 131074, 0, 0, 196610, 0, 1, 196611, 0, 1, 196612, 65536, 0, 196613, 0, 1, 196614, 0, 1, 262150, 0, 1, 262149, 0, 1, 262148, 0, 1, 262147, 0, 1, 262146, 0, 1, 262145, 65536, 0, 196609, 65536, 0, 131073, 0, 1, 131072, 65536, 0, 262144, 0, 1, 196608, 0, 1, 65537, 0, 1, 65536, 0, 1, 0, 65536, 0, -65536, 0, 1, -65535, 0, 1, 1, 0, 1, -131072, 0, 1, -131071, 0, 1, -196607, 0, 1, -196608, 0, 1, -196606, 65536, 0, -131070, 0, 1, -131069, 0, 1, -196605, 0, 1, -196604, 0, 1, -196603, 0, 1, -131067, 0, 1, -131068, 0, 1, -262144, 0, 1, -262143, 0, 1, -262142, 0, 1, -262141, 0, 1, -262140, 0, 1, -262139, 0, 1, -196609, 0, 1, -131073, 0, 1, -65537, 0, 1, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 1, 327686, 0, 1, 393222, 0, 1, 393221, 0, 1, 393220, 0, 1, 393219, 0, 1, 393218, 0, 1, 393217, 0, 1, 393216, 0, 1, 458751, 0, 1)
+layer_0/tile_data = PackedInt32Array(131078, 0, 0, 131077, 0, 0, 131075, 0, 0, 131076, 0, 0, 131074, 0, 0, -65518, 0, 0, -65517, 0, 0, -131052, 0, 0, -131051, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(74, 28)
@@ -234,3 +235,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_wowpa")
 }
 autoplay = "Move"
+
+[node name="Coin" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(104, 25)
