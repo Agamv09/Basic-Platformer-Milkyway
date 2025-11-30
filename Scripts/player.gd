@@ -5,6 +5,7 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite2D: AnimatedSprite2D = $AnimatedSprite2D
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 
 func _physics_process(delta: float) -> void:
@@ -13,7 +14,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and (is_on_floor() || !coyote_timer.is_stopped()):
 		velocity.y = JUMP_VELOCITY
 
 	#Gets input direction: -1, 0 or 1
@@ -41,3 +42,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	var was_on_floor = is_on_floor
+
+	if was_on_floor && !is_on_floor():
+		coyote_timer.start()
